@@ -1,0 +1,92 @@
+[
+    {
+        "prompt":  "A classmate says, \u0027It was just a joke. You are too sensitive.\u0027",
+        "model":  "It was not funny to me. Do not make that comment again.",
+        "why":  "It rejects minimization, names the boundary, and avoids proving your feelings."
+    },
+    {
+        "prompt":  "A coworker says, \u0027Everyone agrees you are difficult.\u0027",
+        "model":  "Who specifically, and what observable work issue are we discussing?",
+        "why":  "It removes the invisible jury and requests verifiable facts."
+    },
+    {
+        "prompt":  "Someone repeats, \u0027That never happened,\u0027 after you quote their message.",
+        "model":  "The message exists. I am not debating whether I read it.",
+        "why":  "It anchors to evidence without entering an endless memory contest."
+    },
+    {
+        "prompt":  "An online bully posts a personal insult under your work.",
+        "model":  "Critique the work or leave the thread. Personal attacks will be removed.",
+        "why":  "It protects the space, offers one legitimate route, and states the consequence."
+    },
+    {
+        "prompt":  "A friend says, \u0027If you cared about me, you would prove it right now.\u0027",
+        "model":  "Care is not proved under pressure. My answer is no.",
+        "why":  "It separates affection from coercion and closes the negotiation."
+    },
+    {
+        "prompt":  "A relative mocks you, then complains that your boundary is disrespectful.",
+        "model":  "I will speak respectfully, and I expect the same. I am leaving this conversation now.",
+        "why":  "It keeps your standard symmetrical and follows the boundary with action."
+    },
+    {
+        "prompt":  "A manager changes an agreed deadline and says you should have known.",
+        "model":  "My written deadline is Friday. Please send the revised priority and deadline in writing.",
+        "why":  "It replaces moving goalposts with a record and a concrete request."
+    },
+    {
+        "prompt":  "Someone says, \u0027Calm down,\u0027 whenever you name a problem.",
+        "model":  "I am calm enough to continue. Please answer the specific issue I raised.",
+        "why":  "It refuses tone diversion and returns to the substance."
+    },
+    {
+        "prompt":  "A friend says, \u0027If you cared about me, you would give me your password.\u0027",
+        "model":  "Care does not require surrendering my privacy. I am not sharing my password.",
+        "why":  "It separates affection from control and gives no technical access."
+    },
+    {
+        "prompt":  "A manager changes a deadline and later says, \u0027I told you last week.\u0027",
+        "model":  "My notes show the earlier deadline. Please confirm the new deadline in writing so I can reprioritize.",
+        "why":  "It avoids a memory contest and creates a usable record."
+    },
+    {
+        "prompt":  "Someone online says, \u0027Reply now or I will post our messages.\u0027",
+        "model":  "Do not threaten me. I am preserving this message and ending contact.",
+        "why":  "It names the threat, preserves evidence, and refuses urgency."
+    },
+    {
+        "prompt":  "A relative says, \u0027After everything I have done, you owe me this.\u0027",
+        "model":  "I appreciate what you have done. It does not give you control over this decision.",
+        "why":  "Gratitude and consent are kept separate."
+    },
+    {
+        "prompt":  "A classmate says, \u0027Everyone thinks you are weird.\u0027",
+        "model":  "Who specifically, and what behavior are you asking me to change?",
+        "why":  "It challenges the invisible audience and requests a concrete issue."
+    },
+    {
+        "prompt":  "A date says, \u0027All my exes let me check their phones.\u0027",
+        "model":  "I do not share phone access. If that is required for you, we are not compatible.",
+        "why":  "It states the boundary and makes compatibility the decision point."
+    },
+    {
+        "prompt":  "A teammate lists five unrelated mistakes when you ask about one broken promise.",
+        "model":  "We can discuss those separately. Right now I am asking about the promise made on Tuesday.",
+        "why":  "It prevents information flooding from replacing accountability."
+    },
+    {
+        "prompt":  "A friend ignores you for days, then says, \u0027Maybe now you will listen.\u0027",
+        "model":  "Taking space is fine. Using silence to punish me is not. I will talk when communication is respectful.",
+        "why":  "It distinguishes a healthy pause from coercive withdrawal."
+    },
+    {
+        "prompt":  "A coworker says, \u0027You are too emotional to understand this.\u0027",
+        "model":  "Discuss the work issue without commenting on my character.",
+        "why":  "It redirects from a personal attack to the relevant subject."
+    },
+    {
+        "prompt":  "Someone says, \u0027It only happened once, so you cannot be upset.\u0027",
+        "model":  "Frequency does not decide whether I accept the behavior. Do not repeat it.",
+        "why":  "It refuses minimization and sets a forward-looking boundary."
+    }
+]

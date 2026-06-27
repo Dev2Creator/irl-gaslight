@@ -1,0 +1,137 @@
+[
+    {
+        "tone":  "calm",
+        "line":  "We can talk when you are ready to be respectful.",
+        "exit":  "Stop responding and move toward safer company."
+    },
+    {
+        "tone":  "calm",
+        "line":  "I heard the insult. It did not answer the point.",
+        "exit":  "Return once to the topic, then leave."
+    },
+    {
+        "tone":  "calm",
+        "line":  "You do not get to define me for me.",
+        "exit":  "Do not explain your identity to someone committed to mocking it."
+    },
+    {
+        "tone":  "calm",
+        "line":  "That comment was unnecessary. Do not repeat it.",
+        "exit":  "Document repetition and involve support."
+    },
+    {
+        "tone":  "dry",
+        "line":  "Your volume is not evidence.",
+        "exit":  "Let them fill the silence by themselves."
+    },
+    {
+        "tone":  "dry",
+        "line":  "That sounded rehearsed. Was there an actual point?",
+        "exit":  "Leave if the next answer is another insult."
+    },
+    {
+        "tone":  "dry",
+        "line":  "Interesting attempt. Still no.",
+        "exit":  "Move on without supplying a debate."
+    },
+    {
+        "tone":  "dry",
+        "line":  "You seem very invested in getting a reaction.",
+        "exit":  "Do not provide the reaction."
+    },
+    {
+        "tone":  "direct",
+        "line":  "Stop speaking to me like that.",
+        "exit":  "Walk away or call in support if they continue."
+    },
+    {
+        "tone":  "direct",
+        "line":  "Name the behavior, not a story about my character.",
+        "exit":  "Keep the discussion factual."
+    },
+    {
+        "tone":  "direct",
+        "line":  "I will not participate in this.",
+        "exit":  "End the call, thread, meeting, or conversation."
+    },
+    {
+        "tone":  "direct",
+        "line":  "Do not contact me again outside the agreed channel.",
+        "exit":  "Block, report, or escalate according to the situation."
+    },
+    {
+        "tone":  "calm",
+        "line":  "That is a label, not a specific concern.",
+        "exit":  "Ask once for facts, then stop defending against the label."
+    },
+    {
+        "tone":  "calm",
+        "line":  "I am comfortable with my answer.",
+        "exit":  "Let silence carry the boundary."
+    },
+    {
+        "tone":  "calm",
+        "line":  "We remember that differently, and I am not arguing in circles.",
+        "exit":  "End the loop and note the facts."
+    },
+    {
+        "tone":  "calm",
+        "line":  "Your disappointment does not change my decision.",
+        "exit":  "Repeat the decision without soothing the pressure."
+    },
+    {
+        "tone":  "calm",
+        "line":  "Please speak to me directly, not through rumors.",
+        "exit":  "Leave third-party claims unanswered."
+    },
+    {
+        "tone":  "dry",
+        "line":  "Interesting theory. Do you have an observable fact?",
+        "exit":  "Wait for evidence instead of filling the silence."
+    },
+    {
+        "tone":  "dry",
+        "line":  "That was a lot of confidence for no actual answer.",
+        "exit":  "Return once to the question, then disengage."
+    },
+    {
+        "tone":  "dry",
+        "line":  "You have mistaken repetition for proof.",
+        "exit":  "Do not restart the same argument."
+    },
+    {
+        "tone":  "dry",
+        "line":  "The invisible committee seems very busy today.",
+        "exit":  "Ask for names and specifics or dismiss the claim."
+    },
+    {
+        "tone":  "dry",
+        "line":  "A deadline you invented is not automatically mine.",
+        "exit":  "Take time to verify before deciding."
+    },
+    {
+        "tone":  "direct",
+        "line":  "Stop contacting me about this.",
+        "exit":  "Block or escalate through appropriate channels if contact continues."
+    },
+    {
+        "tone":  "direct",
+        "line":  "Do not threaten me, even as a joke.",
+        "exit":  "Save the exact words and move toward support."
+    },
+    {
+        "tone":  "direct",
+        "line":  "My no is not an invitation to negotiate.",
+        "exit":  "End the conversation after one repetition."
+    },
+    {
+        "tone":  "direct",
+        "line":  "You do not have permission to share that information.",
+        "exit":  "Document the warning and limit access."
+    },
+    {
+        "tone":  "direct",
+        "line":  "This conversation is over because you are insulting me.",
+        "exit":  "Leave without delivering a final argument."
+    }
+]

@@ -1,0 +1,152 @@
+[
+    {
+        "context":  "general",
+        "line":  "I am willing to discuss this without insults.",
+        "consequence":  "If the insults continue, I will end the conversation.",
+        "delivery":  "Low voice, one sentence, no extra defense."
+    },
+    {
+        "context":  "general",
+        "line":  "I do not agree with that version of events.",
+        "consequence":  "I will pause this discussion if you keep demanding agreement.",
+        "delivery":  "Neutral tone. Do not argue every detail."
+    },
+    {
+        "context":  "general",
+        "line":  "No. That does not work for me.",
+        "consequence":  "I will make my own decision and step away now.",
+        "delivery":  "Let the silence after \u0027no\u0027 do some work."
+    },
+    {
+        "context":  "school",
+        "line":  "Talk about the assignment, not me.",
+        "consequence":  "If the personal comments continue, I will involve the teacher or safeguarding lead.",
+        "delivery":  "Say it where a responsible adult can hear if safe."
+    },
+    {
+        "context":  "work",
+        "line":  "Please keep feedback specific to my work.",
+        "consequence":  "I will document personal remarks and raise the pattern through the proper channel.",
+        "delivery":  "Professional, factual, and preferably in writing."
+    },
+    {
+        "context":  "online",
+        "line":  "I am not available for personal attacks.",
+        "consequence":  "Further messages will be muted, blocked, and reported.",
+        "delivery":  "Do not announce the consequence more than once."
+    },
+    {
+        "context":  "family",
+        "line":  "I will not stay in a conversation where I am being mocked.",
+        "consequence":  "I am leaving the room and we can try again later.",
+        "delivery":  "Choose a safe exit before speaking."
+    },
+    {
+        "context":  "general",
+        "line":  "I answered that already.",
+        "consequence":  "I will not repeat myself to satisfy pressure.",
+        "delivery":  "Use the same words each time."
+    },
+    {
+        "context":  "work",
+        "line":  "That was not the agreement I received.",
+        "consequence":  "I will refer to the written decision before proceeding.",
+        "delivery":  "Bring the conversation back to records."
+    },
+    {
+        "context":  "online",
+        "line":  "You do not have permission to share my private information.",
+        "consequence":  "I will preserve evidence and report any disclosure.",
+        "delivery":  "Do not reveal what evidence you have."
+    },
+    {
+        "context":  "work",
+        "line":  "Please send that request and deadline in writing.",
+        "consequence":  "I will work from the documented priority order.",
+        "delivery":  "Matter-of-fact, without accusing anyone of dishonesty."
+    },
+    {
+        "context":  "work",
+        "line":  "I am not available for comments about my body or private life.",
+        "consequence":  "If it happens again, I will document and report it.",
+        "delivery":  "Direct, brief, and preferably with a witness nearby."
+    },
+    {
+        "context":  "work",
+        "line":  "I can discuss performance using specific examples.",
+        "consequence":  "I will pause if the discussion returns to labels or rumors.",
+        "delivery":  "Keep notes and ask for dates, tasks, and expected outcomes."
+    },
+    {
+        "context":  "school",
+        "line":  "Do not post photos or messages about me without permission.",
+        "consequence":  "I will save the post and report it if it stays up.",
+        "delivery":  "Use writing when possible so the request is recorded."
+    },
+    {
+        "context":  "school",
+        "line":  "I will not share my answers or do your assignment.",
+        "consequence":  "I am leaving this chat if you keep asking.",
+        "delivery":  "No apology and no long explanation."
+    },
+    {
+        "context":  "school",
+        "line":  "You may disagree with me; you may not mock me during class.",
+        "consequence":  "I will involve the teacher if it continues.",
+        "delivery":  "Steady voice, then follow through quietly."
+    },
+    {
+        "context":  "family",
+        "line":  "I am not discussing this while people are shouting.",
+        "consequence":  "I will leave the room and return when it is calm.",
+        "delivery":  "Choose an exit you can safely use."
+    },
+    {
+        "context":  "family",
+        "line":  "My phone and messages are private.",
+        "consequence":  "I will change access and passwords if they are checked without permission.",
+        "delivery":  "State the practical action, not a threat."
+    },
+    {
+        "context":  "family",
+        "line":  "I will decide what personal news I share and when.",
+        "consequence":  "I will stop giving updates if they are passed on without permission.",
+        "delivery":  "Keep the sentence focused on your information."
+    },
+    {
+        "context":  "online",
+        "line":  "Do not tag me in harassment or pile-ons.",
+        "consequence":  "I will block, report, and preserve the messages.",
+        "delivery":  "Do not debate after sending it."
+    },
+    {
+        "context":  "online",
+        "line":  "I do not move private conversations to apps with disappearing messages.",
+        "consequence":  "We can continue here or not continue.",
+        "delivery":  "Treat resistance as useful information."
+    },
+    {
+        "context":  "online",
+        "line":  "I will not prove my identity with private photos or documents.",
+        "consequence":  "I am ending contact if you keep requesting them.",
+        "delivery":  "Never bargain with intimate images or account credentials."
+    },
+    {
+        "context":  "general",
+        "line":  "I need time before answering.",
+        "consequence":  "If you pressure me, my answer will be no.",
+        "delivery":  "Take the time without asking permission for it."
+    },
+    {
+        "context":  "general",
+        "line":  "Do not use things I shared in confidence as ammunition.",
+        "consequence":  "I will stop sharing personal information with you.",
+        "delivery":  "Name the behavior and the access it will cost."
+    },
+    {
+        "context":  "general",
+        "line":  "I am not responsible for managing your reaction to my no.",
+        "consequence":  "I will leave if the reaction becomes insulting or threatening.",
+        "delivery":  "Keep your exit path in mind before saying it."
+    }
+]

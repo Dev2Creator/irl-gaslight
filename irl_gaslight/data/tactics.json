@@ -1,0 +1,242 @@
+[
+    {
+        "name":  "Reality denial",
+        "description":  "A clear event is flatly denied to make you distrust your own observation.",
+        "markers":  [
+                        "that never happened",
+                        "i never said that",
+                        "you made that up",
+                        "you imagined it"
+                    ],
+        "response":  "I remember it differently. I am not debating my memory with you.",
+        "exit":  "End the loop and write down the observable facts."
+    },
+    {
+        "name":  "Memory attack",
+        "description":  "The focus moves from what happened to whether you are capable of remembering anything.",
+        "markers":  [
+                        "your memory is terrible",
+                        "you never remember",
+                        "you are confused",
+                        "you cannot remember"
+                    ],
+        "response":  "We can discuss the event without insulting my ability to remember.",
+        "exit":  "Return to dates, messages, witnesses, or pause the conversation."
+    },
+    {
+        "name":  "Minimization",
+        "description":  "Harmful behavior is reframed as too small for you to mention.",
+        "markers":  [
+                        "it was just a joke",
+                        "you are too sensitive",
+                        "not a big deal",
+                        "you are overreacting"
+                    ],
+        "response":  "It affected me, and I am asking you not to repeat it.",
+        "exit":  "State the consequence once, then follow through."
+    },
+    {
+        "name":  "Blame reversal",
+        "description":  "Their behavior disappears while your reaction becomes the alleged problem.",
+        "markers":  [
+                        "look what you made me do",
+                        "this is your fault",
+                        "if you had not",
+                        "you caused this"
+                    ],
+        "response":  "You are responsible for your behavior. I am responsible for mine.",
+        "exit":  "Refuse the false assignment and leave if escalation continues."
+    },
+    {
+        "name":  "DARVO pattern",
+        "description":  "Deny, attack, then reverse victim and offender when accountability appears.",
+        "markers":  [
+                        "i am the real victim",
+                        "you are attacking me",
+                        "you are the abusive one",
+                        "everyone is against me"
+                    ],
+        "response":  "We were discussing one specific behavior. I will not switch roles or topics.",
+        "exit":  "Use a broken-record response and stop after one repetition."
+    },
+    {
+        "name":  "Social isolation pressure",
+        "description":  "Other relationships are discredited so one person controls your source of reality.",
+        "markers":  [
+                        "they are all lying to you",
+                        "only i understand you",
+                        "your friends hate you",
+                        "do not tell anyone"
+                    ],
+        "response":  "I decide who I speak with. Secrecy is not a condition I accept.",
+        "exit":  "Contact a trusted person privately and review your safety."
+    },
+    {
+        "name":  "Moving goalposts",
+        "description":  "Success is repeatedly redefined so you can never resolve the accusation.",
+        "markers":  [
+                        "that is not enough",
+                        "you should have known",
+                        "prove it again",
+                        "that does not count"
+                    ],
+        "response":  "We agreed on the standard already. I am not accepting a new one after the fact.",
+        "exit":  "Put agreements in writing or stop participating."
+    },
+    {
+        "name":  "Tone policing",
+        "description":  "Your delivery is used to avoid the substance of what you said.",
+        "markers":  [
+                        "calm down",
+                        "not with that tone",
+                        "you are being emotional",
+                        "why are you so angry"
+                    ],
+        "response":  "We can discuss my tone after we address the behavior I named.",
+        "exit":  "Repeat the topic once, then pause."
+    },
+    {
+        "name":  "False consensus",
+        "description":  "Unnamed people are invoked to make you feel isolated or defective.",
+        "markers":  [
+                        "everyone agrees",
+                        "nobody likes",
+                        "people are saying",
+                        "everyone knows"
+                    ],
+        "response":  "Name the specific person and claim, or leave \u0027everyone\u0027 out of it.",
+        "exit":  "Do not defend yourself against an invisible jury."
+    },
+    {
+        "name":  "Threat disguised as concern",
+        "description":  "Control is presented as protection, care, or advice.",
+        "markers":  [
+                        "i am only trying to help",
+                        "for your own good",
+                        "you will regret it",
+                        "i worry what will happen"
+                    ],
+        "response":  "Advice is optional. Pressure and consequences are not care.",
+        "exit":  "Make the decision away from the person applying pressure."
+    },
+    {
+        "name":  "Moving the goalposts",
+        "description":  "The standard changes after you meet it, making success permanently unreachable.",
+        "markers":  [
+                        "that is not enough",
+                        "you should have also",
+                        "anyone could do that",
+                        "it only counts if"
+                    ],
+        "response":  "We agreed on the original standard. I will not accept a new one retroactively.",
+        "exit":  "Restate the written agreement and stop negotiating against a shifting target."
+    },
+    {
+        "name":  "False urgency",
+        "description":  "Pressure is created so you decide before you can check facts or ask for support.",
+        "markers":  [
+                        "decide right now",
+                        "last chance",
+                        "do it immediately",
+                        "no time to think"
+                    ],
+        "response":  "I do not make pressured decisions. I will answer after I have time to review this.",
+        "exit":  "Pause, verify independently, and let artificial deadlines expire."
+    },
+    {
+        "name":  "Forced team choice",
+        "description":  "Disagreement is reframed as betrayal or proof that you support an enemy.",
+        "markers":  [
+                        "if you were really with me",
+                        "pick a side",
+                        "you are either with me",
+                        "prove your loyalty"
+                    ],
+        "response":  "Disagreeing with you is not betrayal. I can care and still say no.",
+        "exit":  "Refuse the false binary and speak to a neutral person."
+    },
+    {
+        "name":  "Punishing silence",
+        "description":  "Contact or affection is withdrawn to force compliance rather than create a healthy pause.",
+        "markers":  [
+                        "i will ignore you",
+                        "do what i want or",
+                        "you will not hear from me",
+                        "maybe then you will learn"
+                    ],
+        "response":  "You may take space. I will not trade compliance for communication.",
+        "exit":  "Stop chasing and decide what respectful reconnection would require."
+    },
+    {
+        "name":  "Public-private switch",
+        "description":  "Someone acts kind around witnesses but cruel in private, making disclosure harder.",
+        "markers":  [
+                        "no one will believe you",
+                        "everyone thinks i am nice",
+                        "it is your word against mine",
+                        "tell them and see"
+                    ],
+        "response":  "Public charm does not erase private behavior. I am documenting what happens.",
+        "exit":  "Keep factual records and involve a trusted third party when safe."
+    },
+    {
+        "name":  "Debt manufacturing",
+        "description":  "Unrequested favors are treated as a contract that gives someone control over you.",
+        "markers":  [
+                        "after everything i did",
+                        "you owe me",
+                        "i helped you so",
+                        "pay me back by"
+                    ],
+        "response":  "I appreciate help, but it did not purchase control over my choices.",
+        "exit":  "Decline future strings-attached favors and clarify agreements beforehand."
+    },
+    {
+        "name":  "Information flooding",
+        "description":  "A simple issue is buried under rapid claims so you cannot answer or verify any one point.",
+        "markers":  [
+                        "and another thing",
+                        "everyone knows",
+                        "there are too many examples",
+                        "where do i even start"
+                    ],
+        "response":  "Choose one specific claim. We will address one thing at a time.",
+        "exit":  "Ask for claims in writing or end the conversation if the flood continues."
+    },
+    {
+        "name":  "Boundary bargaining",
+        "description":  "A clear no is treated as the beginning of a negotiation rather than an answer.",
+        "markers":  [
+                        "just this once",
+                        "why not",
+                        "come on please",
+                        "what would make you say yes"
+                    ],
+        "response":  "No is my answer. I am not negotiating this boundary.",
+        "exit":  "Repeat once, then disengage or physically leave when safe."
+    },
+    {
+        "name":  "Weaponized vulnerability",
+        "description":  "Personal information shared in trust is later used to shame, threaten, or discredit you.",
+        "markers":  [
+                        "remember what you told me",
+                        "i will tell everyone",
+                        "you are just like your",
+                        "this is why you have issues"
+                    ],
+        "response":  "I shared that in confidence. Using it against me ends this conversation.",
+        "exit":  "Reduce access, preserve threats, and seek trusted support."
+    },
+    {
+        "name":  "Proxy pressure",
+        "description":  "Unnamed people are invoked to create social pressure without verifiable feedback.",
+        "markers":  [
+                        "people are saying",
+                        "everyone thinks",
+                        "they all agree",
+                        "nobody likes"
+                    ],
+        "response":  "Name the specific person and observable concern, or leave others out of this.",
+        "exit":  "Do not defend yourself against an invisible audience."
+    }
+]
