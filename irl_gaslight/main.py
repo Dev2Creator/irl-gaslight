@@ -22,12 +22,21 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
+from .identity_adapter import (
+    identity_markup,
+    register_identity_commands,
+    run_first_launch,
+    show_identity_profile,
+    show_oauth_status,
+)
+
 app = typer.Typer(
     help="IRL Gaslight - spot the spin, hold the line, keep your receipts.",
     no_args_is_help=False,
     invoke_without_command=True,
 )
 console = Console(highlight=False)
+register_identity_commands(app)
 
 ACCENT = "#F29265"
 CYAN = "#9CBFFF"
@@ -130,10 +139,12 @@ def print_header() -> None:
     console.print(Text("  Spot the spin. Hold the line. Keep your receipts.", style=CREAM))
     console.print()
     stats = (
-        f"[{MUTED}]Streak     [/{MUTED}][{ACCENT}]{streak} days[/{ACCENT}]\n"
-        f"[{MUTED}]Favorites  [/{MUTED}][{CREAM}]{len(state['favorites'])} saved[/{CREAM}]\n"
-        f"[{MUTED}]Incidents  [/{MUTED}][{CREAM}]{len(state['incidents'])} saved locally[/{CREAM}]\n"
-        f"[{MUTED}]Privacy    [/{MUTED}][{CYAN}]No account. No cloud. No telemetry.[/{CYAN}]"
+        identity_markup()
+        + "\n"
+        + f"[{MUTED}]Streak     [/{MUTED}][{ACCENT}]{streak} days[/{ACCENT}]\n"
+        + f"[{MUTED}]Favorites  [/{MUTED}][{CREAM}]{len(state['favorites'])} saved[/{CREAM}]\n"
+        + f"[{MUTED}]Incidents  [/{MUTED}][{CREAM}]{len(state['incidents'])} saved locally[/{CREAM}]\n"
+        + f"[{MUTED}]Privacy    [/{MUTED}][{CYAN}]Local-first. OAuth tokens stay on this device.[/{CYAN}]"
     )
     console.print(
         Panel(
@@ -512,6 +523,8 @@ def run_menu() -> None:
                 command_choice("daily", "Get today's grounding thought", "daily"),
                 command_choice("favorites", "Open your saved response shelf", "favorites"),
                 command_choice("resources", "Know when to get support", "resources"),
+                command_choice("profile", "Open your shared IRL identity", "profile"),
+                command_choice("oauth", "Check the Google account link", "oauth"),
                 command_choice("upgrade", "Check PyPI for a new release", "upgrade"),
                 command_choice("exit", "Leave IRL Gaslight", "exit"),
             ],
@@ -541,6 +554,10 @@ def run_menu() -> None:
             favorites(remove=None)
         elif action == "resources":
             resources()
+        elif action == "profile":
+            show_identity_profile()
+        elif action == "oauth":
+            show_oauth_status()
         elif action == "upgrade":
             upgrade(yes=False)
         console.print()
@@ -554,6 +571,7 @@ def run_menu() -> None:
 def main(ctx: typer.Context) -> None:
     """Open the interactive command palette when no command is supplied."""
     if ctx.invoked_subcommand is None:
+        run_first_launch()
         run_menu()
 
 

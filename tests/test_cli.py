@@ -1,6 +1,7 @@
 from typer.testing import CliRunner
 
-from irl_gaslight import main
+from irl_gaslight import identity_adapter, main
+from irl_identity.oauth import GoogleOAuthConfig, build_auth_url, create_pkce_pair
 
 runner = CliRunner()
 
@@ -49,3 +50,41 @@ def test_help_lists_library_commands():
     assert result.exit_code == 0
     assert "favorites" in result.stdout
     assert "upgrade" in result.stdout
+
+def test_oauth_status_unlinked(monkeypatch):
+    monkeypatch.setattr(identity_adapter, "google_status", lambda: None)
+    result = runner.invoke(main.app, ["oauth", "status"])
+    assert result.exit_code == 0
+    assert "No Google account linked" in result.stdout
+
+
+def test_identity_markup_uses_shared_profile(monkeypatch):
+    monkeypatch.setattr(
+        identity_adapter,
+        "load_profile",
+        lambda: {"name": "Anika", "name_pronunciation": "Ah-nee-kah", "pronouns": "she/her"},
+    )
+    monkeypatch.setattr(identity_adapter, "google_status", lambda: {"email": "a@example.com"})
+    markup = identity_adapter.identity_markup()
+    assert "Anika" in markup
+    assert "she/her" in markup
+    assert "a@example.com" in markup
+
+
+def test_shared_oauth_uses_pkce():
+    _, challenge = create_pkce_pair()
+    url = build_auth_url(
+        GoogleOAuthConfig(client_id="client.apps.googleusercontent.com"),
+        "http://127.0.0.1:1234/callback",
+        "state123",
+        challenge,
+    )
+    assert "accounts.google.com" in url
+    assert "code_challenge_method=S256" in url
+
+
+def test_help_lists_identity_commands():
+    result = runner.invoke(main.app, ["--help"])
+    assert result.exit_code == 0
+    for command in ("oauth", "profile", "avatar", "oath"):
+        assert command in result.stdout

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "irl-gaslight"
-version = "0.1.0"
+version = "0.2.0"
 authors = [
   { name = "Anika Mukherjee", email = "cuteypieanika@gmail.com" },
 ]
@@ -36,3 +36,6 @@ irl_gaslight = ["data/*.json", "data/*.ansi"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["irl_gaslight*", "irl_identity*"]
