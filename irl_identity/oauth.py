@@ -7,6 +7,7 @@ import os
 import secrets
 import threading
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import webbrowser
@@ -22,6 +23,7 @@ GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token"
 DEFAULT_SCOPES = ("openid", "email", "profile")
 DEFAULT_CLIENT_ID = "715633377290-2g0losgju3k8uptldf4o1dihae0tni5b.apps.googleusercontent.com"
 TOKEN_PATH = PROFILE_DIR / "google_oauth.json"
+CLIENT_CONFIG_PATH = PROFILE_DIR / "google_client.json"
 
 
 @dataclass(frozen=True)
@@ -32,11 +34,52 @@ class GoogleOAuthConfig:
     timeout_seconds: int = 180
 
 
+def load_google_client_config() -> dict[str, str]:
+    if not CLIENT_CONFIG_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(CLIENT_CONFIG_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {
+        "client_id": str(payload.get("client_id", "")).strip(),
+        "client_secret": str(payload.get("client_secret", "")).strip(),
+    }
+
+
+def configure_google_client(credentials_path: str | Path) -> GoogleOAuthConfig:
+    source = Path(credentials_path).expanduser()
+    try:
+        payload = json.loads(source.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise RuntimeError(f"Could not read Google credentials: {source}") from exc
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Google credentials file is not valid JSON.") from exc
+    section = payload.get("installed") or payload.get("web") or payload
+    if not isinstance(section, dict):
+        raise RuntimeError("Google credentials must contain an installed or web client object.")
+    client_id = str(section.get("client_id", "")).strip()
+    client_secret = str(section.get("client_secret", "")).strip()
+    if not client_id or not client_secret:
+        raise RuntimeError("Google credentials are missing client_id or client_secret.")
+    PROFILE_DIR.mkdir(parents=True, exist_ok=True)
+    CLIENT_CONFIG_PATH.write_text(
+        json.dumps({"client_id": client_id, "client_secret": client_secret}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    try:
+        CLIENT_CONFIG_PATH.chmod(0o600)
+    except OSError:
+        pass
+    return GoogleOAuthConfig(client_id=client_id, client_secret=client_secret)
+
+
 def config_from_env() -> GoogleOAuthConfig | None:
-    client_id = os.getenv("IRL_GOOGLE_CLIENT_ID", DEFAULT_CLIENT_ID).strip()
+    stored = load_google_client_config()
+    client_id = os.getenv("IRL_GOOGLE_CLIENT_ID", "").strip() or stored.get("client_id") or DEFAULT_CLIENT_ID
     if not client_id:
         return None
-    client_secret = os.getenv("IRL_GOOGLE_CLIENT_SECRET", "").strip() or None
+    client_secret = os.getenv("IRL_GOOGLE_CLIENT_SECRET", "").strip() or stored.get("client_secret") or None
     scopes = tuple(os.getenv("IRL_GOOGLE_SCOPES", " ".join(DEFAULT_SCOPES)).split())
     return GoogleOAuthConfig(client_id=client_id, client_secret=client_secret, scopes=scopes)
 
@@ -47,6 +90,9 @@ def oauth_setup_help() -> str:
             "Google OAuth is not configured yet.",
             "",
             "Create a Google OAuth Desktop client, then set:",
+            "  irl-gaslight oauth configure path/to/client_secret.json",
+            "",
+            "Or set environment variables:",
             "  IRL_GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com",
             "",
             "Optional:",
@@ -100,10 +146,10 @@ class OAuthCallbackHandler(BaseHTTPRequestHandler):
         self.wfile.write(
             b"""
 <!doctype html>
-<title>IRL OAuth Complete</title>
+<title>IRL OAuth Returned</title>
 <body style="background:#090807;color:#d8b08a;font-family:monospace;padding:2rem">
-<h1>IRL OAuth sealed.</h1>
-<p>You can return to the terminal. The stone remembers.</p>
+<h1>Google returned to the terminal.</h1>
+<p>The terminal is verifying and saving the link now. Return there for the final result.</p>
 </body>
 """
         )
@@ -163,8 +209,18 @@ def exchange_code(config: GoogleOAuthConfig, redirect_uri: str, code: str, verif
         headers={"Content-Type": "application/x-www-form-urlencoded"},
         method="POST",
     )
-    with urllib.request.urlopen(request, timeout=30) as response:  # noqa: S310 - fixed Google HTTPS endpoint
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:  # noqa: S310 - fixed Google HTTPS endpoint
+            return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        raw_body = exc.read().decode("utf-8", errors="replace")
+        try:
+            error_payload = json.loads(raw_body)
+        except json.JSONDecodeError:
+            error_payload = {}
+        description = str(error_payload.get("error_description") or error_payload.get("error") or raw_body).strip()
+        detail = description or exc.reason or "unknown token endpoint error"
+        raise RuntimeError(f"Google token exchange failed ({exc.code}): {detail}") from exc
 
 
 def save_google_tokens(tokens: dict[str, Any]) -> None:

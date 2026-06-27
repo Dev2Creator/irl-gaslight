@@ -11,7 +11,14 @@ from rich.panel import Panel
 
 from irl_identity.avatars import get_avatar
 from irl_identity.first_run import app_seen, ensure_first_run_login
-from irl_identity.oauth import config_from_env, google_status, run_google_login, unlink_google
+from irl_identity.oauth import (
+    CLIENT_CONFIG_PATH,
+    config_from_env,
+    configure_google_client,
+    google_status,
+    run_google_login,
+    unlink_google,
+)
 from irl_identity.profile import load_profile
 from irl_identity.ui import RenderOptions, confirm_reset, edit_profile, ensure_profile, show_oath, show_profile
 
@@ -71,7 +78,9 @@ def show_identity_profile() -> None:
 def show_oauth_status() -> None:
     google = google_status()
     if not google:
-        Console().print(_panel("No Google account linked.\n\nRun: irl-gaslight oauth login", "OAuth Status"))
+        configured = bool(config_from_env() and config_from_env().client_secret)
+        setup = "yes" if configured else "no"
+        Console().print(_panel(f"No Google account linked.\nOAuth client configured: {setup}\n\nRun: irl-gaslight oauth login", "OAuth Status"))
         return
     body = (
         f"Linked: yes\n"
@@ -82,6 +91,23 @@ def show_oauth_status() -> None:
     )
     Console().print(_panel(body, "OAuth Status"))
 
+
+@oauth_app.command("configure")
+def oauth_configure(
+    credentials: str = typer.Argument(..., help="Google OAuth desktop-client JSON file."),
+) -> None:
+    """Import a Google OAuth client JSON into the local shared IRL store."""
+    try:
+        config = configure_google_client(credentials)
+    except RuntimeError as exc:
+        Console().print(_panel(escape(str(exc)), "OAuth Setup Failed"))
+        raise typer.Exit(code=1) from exc
+    Console().print(
+        _panel(
+            f"Client configured: {escape(config.client_id)}\nSaved locally: {escape(str(CLIENT_CONFIG_PATH))}\n\nThe client secret was not printed.",
+            "OAuth Client Ready",
+        )
+    )
 
 @oauth_app.command("login")
 def oauth_login(

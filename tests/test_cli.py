@@ -1,7 +1,18 @@
+import io
+import urllib.error
+
+import pytest
 from typer.testing import CliRunner
 
 from irl_gaslight import identity_adapter, main
-from irl_identity.oauth import GoogleOAuthConfig, build_auth_url, create_pkce_pair
+import irl_identity.oauth as oauth_module
+from irl_identity.oauth import (
+    GoogleOAuthConfig,
+    build_auth_url,
+    configure_google_client,
+    create_pkce_pair,
+    exchange_code,
+)
 
 runner = CliRunner()
 
@@ -88,3 +99,41 @@ def test_help_lists_identity_commands():
     assert result.exit_code == 0
     for command in ("oauth", "profile", "avatar", "oath"):
         assert command in result.stdout
+
+
+def test_token_exchange_surfaces_google_error(monkeypatch):
+    error = urllib.error.HTTPError(
+        "https://oauth2.googleapis.com/token",
+        400,
+        "Bad Request",
+        {},
+        io.BytesIO(b'{"error":"invalid_client","error_description":"Client authentication failed"}'),
+    )
+
+    def fail_exchange(*args, **kwargs):
+        raise error
+
+    monkeypatch.setattr(oauth_module.urllib.request, "urlopen", fail_exchange)
+    with pytest.raises(RuntimeError, match="Client authentication failed"):
+        exchange_code(
+            GoogleOAuthConfig(client_id="client.apps.googleusercontent.com"),
+            "http://127.0.0.1:1234/callback",
+            "code",
+            "verifier",
+        )
+
+def test_configure_google_client(tmp_path, monkeypatch):
+    credentials = tmp_path / "client.json"
+    credentials.write_text(
+        '{"installed":{"client_id":"client.apps.googleusercontent.com","client_secret":"secret"}}',
+        encoding="utf-8",
+    )
+    destination = tmp_path / ".irl" / "google_client.json"
+    monkeypatch.setattr(oauth_module, "PROFILE_DIR", destination.parent)
+    monkeypatch.setattr(oauth_module, "CLIENT_CONFIG_PATH", destination)
+    config = configure_google_client(credentials)
+    assert config.client_id == "client.apps.googleusercontent.com"
+    assert config.client_secret == "secret"
+    stored = destination.read_text(encoding="utf-8")
+    assert "client.apps.googleusercontent.com" in stored
+    assert "secret" in stored

@@ -84,11 +84,12 @@ IRL Gaslight uses the same local identity system as IRL Wisdom. A profile create
     irl-gaslight profile reset
     irl-gaslight avatar
     irl-gaslight oath
+    irl-gaslight oauth configure path/to/client_secret.json
     irl-gaslight oauth login
     irl-gaslight oauth status
     irl-gaslight oauth logout
 
-The Google flow uses OAuth 2.0 Authorization Code with PKCE, a random state value, and a temporary localhost callback. Tokens are written locally to `~/.irl/google_oauth.json`; profile data lives in `~/.irl/profile.json`.
+The Google flow uses OAuth 2.0 Authorization Code with PKCE, a random state value, and a temporary localhost callback. The imported OAuth client is stored locally in `~/.irl/google_client.json`, tokens in `~/.irl/google_oauth.json`, and profile data in `~/.irl/profile.json`. Secrets are never committed or bundled into the package.
 
 Google linking is optional. Cancelling, going offline, or skipping login does not block the defensive tools.
 
