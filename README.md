@@ -134,6 +134,13 @@ The detector is a phrase-based educational aid, not a diagnosis. Context, repeti
 
 Do not use a comeback when it could increase danger. If someone is threatening, stalking, controlling, or violent, prioritize distance, trusted support, and local emergency or abuse-support services. Use `irl-gaslight resources` for the built-in safety checklist.
 
+## Train the 5M offline model
+
+The optional ML workspace trains a ~4.94M-parameter classifier and curated-response retriever without reading private logs or OAuth data.
+
+- [Open the one-click Colab notebook](https://colab.research.google.com/github/Dev2Creator/irl-gaslight/blob/main/notebooks/train_irl_gaslight_5m.ipynb)
+- [Read the model training guide](ml/README.md)
+
 ## Development
 
     git clone https://github.com/Dev2Creator/irl-gaslight.git
